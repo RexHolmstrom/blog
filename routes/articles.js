@@ -8,12 +8,13 @@ router.get('/new', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-
+    const article = Article.findById(req.params.id)
+    res.render('articles/show', { article: article })
 })
 //this is connected to mongoose
 //creating new article 
 router.post('/', async (req, res) => {
-    const article = new Article({
+    let article = new Article({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown,
