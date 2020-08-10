@@ -10,8 +10,9 @@ app.set('view engine', 'ejs')
 
 //cmd to use the Article router
 //the '/articles' <-- is to place everything in /articles
-app.use('/articles', articleRouter)
 app.use(express.urlencoded({ extended: false }))
+
+
 
 app.get('/', (req, res) => {
     const articles = [{
@@ -28,5 +29,7 @@ app.get('/', (req, res) => {
     }]
     res.render('articles/index', { articles: articles })
 })
+
+app.use('/articles', articleRouter)
 
 app.listen(5000)
