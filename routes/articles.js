@@ -7,8 +7,11 @@ router.get('/new', (req, res) => {
 })
 
 
-router.get('/:id', (req, res) => {
-    const article = Article.findById(req.params.id)
+router.get('/:id', async (req, res) => {
+    const article = await Article.findById(req.params.id)
+    //if article cant be found 
+    //redirect to homepage 
+    if (article == null) res.redirect('/')
     res.render('articles/show', { article: article })
 })
 //this is connected to mongoose
