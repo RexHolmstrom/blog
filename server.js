@@ -12,13 +12,13 @@ app.use('/articles', articleRouter)
 app.get('/', (req, res) => {
     const articles = [{
         title: 'test article',
-        createdat: Date.now(),
+        createdAt: new Date(),
         description: 'test description'
 
     },
     {
-        title: 'test article',
-        createdat: Date.now(),
+        title: 'test article2',
+        createdAt: new Date(),
         description: 'test description'
 
     }]
