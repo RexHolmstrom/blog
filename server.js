@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const Article = require('./models/article')
 const articleRouter = require('./routes/articles')
 const app = express()
 
@@ -14,19 +15,8 @@ app.use(express.urlencoded({ extended: false }))
 
 
 
-app.get('/', (req, res) => {
-    const articles = [{
-        title: 'test article',
-        createdAt: new Date(),
-        description: 'test description'
-
-    },
-    {
-        title: 'test article2',
-        createdAt: new Date(),
-        description: 'test description'
-
-    }]
+app.get('/', async (req, res) => {
+    const articles = await Article.find()
     res.render('articles/index', { articles: articles })
 })
 
