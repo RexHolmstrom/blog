@@ -16,7 +16,10 @@ app.use(express.urlencoded({ extended: false }))
 
 
 app.get('/', async (req, res) => {
-    const articles = await Article.find()
+    //sorting article to the top of the page -> newest on top
+    const articles = await Article.find().sort({
+        createdAt: 'desc'
+    })
     res.render('articles/index', { articles: articles })
 })
 
