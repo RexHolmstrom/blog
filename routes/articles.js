@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-
+method = "DELETE"
 router.delete('/', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)
     res.redirect('/')
